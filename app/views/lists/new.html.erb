@@ -1,0 +1,8 @@
+<h3> Create a new list:</h3>
+<%= render 'shared/errors', obj: @list %>
+ <%= form_for [@user, @list] do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+   <br/>
+   <%= f.submit "Create List" %>
+<% end %>

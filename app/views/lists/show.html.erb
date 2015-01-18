@@ -1,0 +1,9 @@
+<h3>hi there!</h3>
+
+<%= @list.title %>
+<br/>
+<ul>
+  <% @list.items.each do |item| %>
+    <li><%= item.name %> | <%= item.description %></li>
+  <% end %>
+</ul>
