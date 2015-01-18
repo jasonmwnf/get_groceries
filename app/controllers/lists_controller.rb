@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :require_user
 
   def show
     @list = List.find(params[:id])
@@ -20,6 +21,25 @@ class ListsController < ApplicationController
     else
       flash[:alert] = "Please try again."
       render :new
+    end
+  end
+
+  def edit
+    @list = List.find(params[:id])
+    @user = User.find(params[:user_id])
+  end
+
+  def update
+    list = List.find(params[:id])
+    list.title = params[:list][:title]
+    @user = User.find(params[:user_id])
+
+    if list.save
+      flash[:notice] = "List has been updated"
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = "something went wrong"
+      render :edit
     end
   end
 
