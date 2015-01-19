@@ -7,6 +7,13 @@
     <% @user.lists.each do |list| %>
       <li><%= link_to list.title,  user_list_path(@user, list) %> |
       <%= link_to "edit", edit_user_list_path(@user, list) %></li>
+        <ul>
+          <% if list.items.any? %>
+            <% list.items.each do |item| %>
+              <li><%= item.name %> | <%= item.description %> </li>
+            <% end %>
+          <% end %>
+        </ul>
     <% end %>
   </ul>
 </p> 
