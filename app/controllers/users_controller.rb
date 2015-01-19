@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  binding.pry
   before_action :require_user, only: [:show]
 
   def index
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Thanks for registering!"
+      session[:user_id] = @user.id 
       redirect_to user_path(@user)
     else
       render :new
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @user = User.find(params[:id])
     if session[:user_id] != params[:id].to_i
       flash[:error] = "You are not allowed to do that."
