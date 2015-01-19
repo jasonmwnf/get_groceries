@@ -1,7 +1,7 @@
 <%= render "/layouts/flash_messages" %>
+
 <h3>Hi there, <%= link_to @user.username, user_path %>! </h3>
-<%= link_to "Create a new list", new_user_list_path(@user) %> |
-<%= link_to 'Logout', logout_path %>
+<%= link_to "Create a new list", new_user_list_path(@user) %>
 <p>
   <ul>
     <% @user.lists.each do |list| %>

@@ -14,9 +14,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    if !logged_in?  
+    if !logged_in? 
       flash[:error] = "You must be logged in to do that."
       redirect_to login_path
     end
   end 
+
+  def wrong_user?
+    if session[:user_id] != params[:user_id].to_i
+      flash[:error] = "You are not allowed to do that."
+      redirect_to root_path
+    end
+  end
 end

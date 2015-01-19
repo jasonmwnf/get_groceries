@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user, only: [:show]
+
   def index
     
   end
@@ -20,6 +22,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if session[:user_id] != params[:id].to_i
+      flash[:error] = "You are not allowed to do that."
+      redirect_to root_path
+    end
   end
 
   private

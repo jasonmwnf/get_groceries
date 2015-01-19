@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :require_user
+  before_action :require_user, :wrong_user?
 
   def show
     @list = List.find(params[:id])
