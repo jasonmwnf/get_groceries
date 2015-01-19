@@ -5,6 +5,7 @@
       <% if !logged_in? %>
         <a href="/login"><button type="button" class="btn btn-default navbar-btn">Sign in</button></a>
       <% else %>
+        <%= link_to "Hi, #{current_user.username.capitalize}", user_path(current_user) %>
         <a href="/logout"><button type="button" class="btn btn-default navbar-btn">Log out</button></a>
       <% end %>
     </div>

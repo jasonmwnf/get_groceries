@@ -3,6 +3,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -41,6 +42,13 @@ class ListsController < ApplicationController
       flash[:alert] = "something went wrong"
       render :edit
     end
+  end
+
+  def destroy
+    list = List.find(params[:id])
+    user = User.find(params[:user_id])
+    list.destroy
+    redirect_to user_path(user)
   end
 
   private

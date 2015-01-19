@@ -7,3 +7,5 @@
     <li><%= item.name %> | <%= item.description %></li>
   <% end %>
 </ul>
+
+<%= link_to "Delete list", user_list_path(@user, @list), method: "Delete" %>

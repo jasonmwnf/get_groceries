@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
+
+
   resources :users do 
-    resources :lists
+    resources :lists do
+      resources :items
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
