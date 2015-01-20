@@ -1,15 +1,20 @@
 <%= render 'shared/errors', obj: @list %>
-<h3> Create a new list:</h3>
- <%= form_for [@user, @list], html: {class: "form-horizontal", role: "form"} do |f| %>
-   <div class="form-group">
-    <%= f.label :title, class: "col-sm-2 control-label" %>
-    <div class="col-sm-3">
-      <%= f.text_field :title, class: "form-control" %>
+<div class="container">
+  <h3> Create a new list:</h3>
+  <hr/>
+  <div class="col-md-4 well">
+    <%= form_for [@user, @list], html: {class: "form-horizontal", role: "form"} do |f| %>
+     <div class="form-group">
+      <%= f.label :title, class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
     </div>
-  </div>
-   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Create List", class: "btn btn-default" %>
+     <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit "Create List", class: "btn btn-default" %>
+      </div>
     </div>
+    <% end %>
   </div>
-<% end %>
+</div>

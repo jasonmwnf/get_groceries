@@ -1,22 +1,23 @@
 <%= render "/layouts/flash_messages" %>
+<div class="container">
+  <h3>Your List's: </h3>
 
-<h3>Your List's: </h3>
-
-<%= link_to "Create a new list", new_user_list_path(@user) %>
-<p>
-  <ul>
-    <% @user.lists.each do |list| %>
-      <div class="well">
-      <li><%= link_to list.title,  user_list_path(@user, list) %> |
-      [<%= link_to "add item", new_user_list_item_path(@user, list) %>]</li>
-        <ul>
-          <% if list.items.any? %>
-            <% list.items.each do |item| %>
-              <li><%= item.name %> | <%= item.description %> [<%= link_to "delete", user_list_item_path(@user, list, item), method: "delete" %>]</li>
+  <%= link_to "Create a new list", new_user_list_path(@user) %>
+  <p>
+    <ul>
+      <% @user.lists.each do |list| %>
+        <div class="well" style="width: 600px">
+        <li><%= link_to list.title,  user_list_path(@user, list) %> |
+        [<%= link_to "add item", new_user_list_item_path(@user, list) %>]</li>
+          <ul>
+            <% if list.items.any? %>
+              <% list.items.each do |item| %>
+                <li><%= item.name %> | <%= item.description %> [<%= link_to "delete", user_list_item_path(@user, list, item), method: "delete" %>]</li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </ul>
-</p> 
+          </ul>
+        </div>
+      <% end %>
+    </ul>
+  </p> 
+</div>
