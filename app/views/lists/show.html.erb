@@ -1,11 +1,17 @@
-<h3>hi there!</h3>
-
-<%= @list.title %>
-<br/>
-<ul>
-  <% @list.items.each do |item| %>
-    <li><%= item.name %> | <%= item.description %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Delete list", user_list_path(@user, @list), method: "Delete" %>
+<div class="row">
+  <div class="center-block" style="width:200px;background-color:#ccc;">
+    <div class="text-center">
+      <h3><%= @list.title.capitalize %></h3>
+    </div>
+    <div class="well">
+      <ul>
+        <% @list.items.each do |item| %>
+          <li><%= item.name %> | <%= item.description %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+[<%= link_to "Delete list", user_list_path(@user, @list), method: "Delete" %>]
+</div>

@@ -8,11 +8,11 @@
     <% @user.lists.each do |list| %>
       <div class="well">
       <li><%= link_to list.title,  user_list_path(@user, list) %> |
-      <%= link_to "add item", new_user_list_item_path(@user, list) %></li>
+      [<%= link_to "add item", new_user_list_item_path(@user, list) %>]</li>
         <ul>
           <% if list.items.any? %>
             <% list.items.each do |item| %>
-              <li><%= item.name %> | <%= item.description %> <%= link_to "x", user_list_item_path(@user, list, item), method: "delete" %></li>
+              <li><%= item.name %> | <%= item.description %> [<%= link_to "delete", user_list_item_path(@user, list, item), method: "delete" %>]</li>
             <% end %>
           <% end %>
         </ul>
